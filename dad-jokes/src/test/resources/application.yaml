@@ -1,0 +1,28 @@
+# Test-only configuration.
+#
+# During `mvn test` the classpath puts target/test-classes ahead of
+# target/classes, so this file SHADOWS src/main/resources/application.yaml.
+# That means the production `spring.config.import: vault://` is NOT present
+# here, so the test context loads without contacting Vault or needing the
+# VAULT_URI / VAULT_TOKEN env vars.
+#
+# Dummy API keys are provided so the DeepSeek/OpenAI auto-configuration can
+# create the ChatModel beans (and therefore the ChatClient beans and the
+# controller) at context-load time. No real network calls are made by
+# @SpringBootTest's contextLoads(), so placeholder values are fine.
+spring:
+  application:
+    name: dad-jokes
+  cloud:
+    vault:
+      enabled: false
+  ai:
+    deepseek:
+      api-key: test-deepseek-key
+      chat:
+        model: "deepseek-v4-flash"
+    openai:
+      api-key: test-openai-key
+      base-url: "https://openrouter.ai/api/v1"
+      chat:
+        model: "openai/gpt-4o-mini"
