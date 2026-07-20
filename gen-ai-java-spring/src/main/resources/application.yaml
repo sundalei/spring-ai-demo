@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: gen-ai-java-spring
+  ai:
+    openai:
+      api-key: ${OPENROUTER_API_KEY}
+      chat:
+        model: "openai/gpt-4o-mini"
+      base-url: "https://openrouter.ai/api/v1"
+  config:
+    import: vault://
+  cloud:
+    vault:
+      uri: ${spring.cloud.vault.uri}
+      token: ${spring.cloud.vault.token}
+      scheme: https
+      kv:
+        enabled: true
+        backend: secret
+        # Same shared bucket as dad-jokes -> both modules read secret/shared-secrets.
+        default-context: shared-secrets
+        # Per-module overrides, if any, live at secret/<application-name> and win over the shared ones.
+        application-name: ${spring.application.name}

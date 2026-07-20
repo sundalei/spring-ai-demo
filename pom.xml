@@ -16,6 +16,7 @@
 
   <modules>
     <module>dad-jokes</module>
+    <module>gen-ai-java-spring</module>
   </modules>
 
   <properties>

@@ -1,0 +1,15 @@
+# Test-only configuration (see dad-jokes for the full rationale).
+# Shadows src/main/resources/application.yaml during `mvn test` so the context
+# loads without contacting Vault or needing VAULT_URI / VAULT_TOKEN.
+spring:
+  application:
+    name: gen-ai-java-spring
+  cloud:
+    vault:
+      enabled: false
+  ai:
+    openai:
+      api-key: test-openai-key
+      base-url: "https://openrouter.ai/api/v1"
+      chat:
+        model: "openai/gpt-4o-mini"
