@@ -1,1 +1,0 @@
-http://www.javacreed.com/gson-serialiser-example/
