@@ -24,6 +24,8 @@
     <spring-ai.version>2.0.0</spring-ai.version>
     <spring-cloud.version>2025.1.2</spring-cloud.version>
     <spotless.version>3.8.0</spotless.version>
+    <prettier.version>3.8.1</prettier.version>
+    <prettier.plugin.xml.version>3.4.2</prettier.plugin.xml.version>
   </properties>
 
   <dependencyManagement>
@@ -79,6 +81,38 @@
               <nrOfIndentSpace>2</nrOfIndentSpace>
             </sortPom>
           </pom>
+          <formats>
+            <format>
+              <includes>
+                <include>**/*.xml</include>
+              </includes>
+              <excludes>
+                <exclude>**/pom.xml</exclude>
+                <exclude>**/target/**</exclude>
+              </excludes>
+              <trimTrailingWhitespace/>
+              <endWithNewline/>
+              <prettier>
+                <devDependencyProperties>
+                  <property>
+                    <name>prettier</name>
+                    <value>${prettier.version}</value>
+                  </property>
+                  <property>
+                    <name>@prettier/plugin-xml</name>
+                    <value>${prettier.plugin.xml.version}</value>
+                  </property>
+                </devDependencyProperties>
+                <config>
+                  <parser>xml</parser>
+                  <tabWidth>2</tabWidth>
+                  <printWidth>160</printWidth>
+                  <xmlWhitespaceSensitivity>preserve</xmlWhitespaceSensitivity>
+                  <plugins>@prettier/plugin-xml</plugins>
+                </config>
+              </prettier>
+            </format>
+          </formats>
         </configuration>
         <!-- Enforce formatting on build for every module. Use spotless:apply to auto-format. -->
         <executions>

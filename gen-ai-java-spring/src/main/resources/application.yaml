@@ -8,7 +8,7 @@ spring:
     openai:
       api-key: ${OPENROUTER_API_KEY}
       chat:
-        model: "openai/gpt-4o-mini"
+        model: "openai/gpt-4o"
       base-url: "https://openrouter.ai/api/v1"
   config:
     import: vault://
@@ -24,3 +24,9 @@ spring:
         default-context: shared-secrets
         # Per-module overrides, if any, live at secret/<application-name> and win over the shared ones.
         application-name: ${spring.application.name}
+
+logging:
+  level:
+    root: info
+    "[com.example]": info
+    "[org.springframework.ai]": info
