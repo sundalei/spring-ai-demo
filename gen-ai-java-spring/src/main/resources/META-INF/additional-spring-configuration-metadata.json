@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "app.ai.provider",
+  "type": "java.lang.String",
+  "description": "Provider of LLM (deepseek, openai)"
+}]}

@@ -1,6 +1,10 @@
 server:
   port: 8081
 
+app:
+  ai:
+    provider: deepseek # or openai
+
 spring:
   application:
     name: gen-ai-java-spring
@@ -10,6 +14,10 @@ spring:
       chat:
         model: "openai/gpt-4o"
       base-url: "https://openrouter.ai/api/v1"
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY}
+      chat:
+        model: "deepseek-v4-flash"
   config:
     import: vault://
   cloud:

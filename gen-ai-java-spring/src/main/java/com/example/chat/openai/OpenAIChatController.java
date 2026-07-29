@@ -2,7 +2,6 @@ package com.example.chat.openai;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,7 @@ public class OpenAIChatController {
   private final ChatClient chatClient;
   private final OpenAIService openAIService;
 
-  public OpenAIChatController(
-      @Qualifier("openAIChatClient") ChatClient chatClient, OpenAIService openAIService) {
+  public OpenAIChatController(ChatClient chatClient, OpenAIService openAIService) {
     this.chatClient = chatClient;
     this.openAIService = openAIService;
   }
