@@ -10,34 +10,10 @@ spring:
     name: gen-ai-java-spring
   ai:
     openai:
-      api-key: ${OPENROUTER_API_KEY}
+      api-key:
       chat:
         model: "openai/gpt-4o"
       base-url: "https://openrouter.ai/api/v1"
-    deepseek:
-      api-key: ${DEEPSEEK_API_KEY}
-      chat:
-        model: "deepseek-v4-flash"
-  config:
-    import: vault://
-  cloud:
-    vault:
-      uri: ${spring.cloud.vault.uri}
-      token: ${spring.cloud.vault.token}
-      scheme: https
-      kv:
-        enabled: true
-        backend: secret
-        # Same shared bucket as dad-jokes -> both modules read secret/shared-secrets.
-        default-context: shared-secrets
-        # Per-module overrides, if any, live at secret/<application-name> and win over the shared ones.
-        application-name: ${spring.application.name}
-
-logging:
-  level:
-    root: info
-    "[com.example]": info
-    "[org.springframework.ai]": info
 
 huggingface:
   api-key: ${HUGGINGFACE_API_KEY}

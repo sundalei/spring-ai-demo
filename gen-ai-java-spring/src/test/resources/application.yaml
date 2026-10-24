@@ -4,16 +4,9 @@
 spring:
   application:
     name: gen-ai-java-spring
-  cloud:
-    vault:
-      enabled: false
   ai:
     openai:
       api-key: test-openai-key
       base-url: "https://openrouter.ai/api/v1"
       chat:
         model: "openai/gpt-4o-mini"
-    deepseek:
-      api-key: test-deepseek-key
-      chat:
-        model: "deepseek-v4-flash"
